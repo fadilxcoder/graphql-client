@@ -3,17 +3,16 @@
 class GraphQL
 {
     private const ENDPOINT = 'https://graphqlzero.almansi.me/api';
+    
+    private const OATH_TOKEN = 'Lyi63vv1LTC48dmKRlxQbLbDbzo4MaWv';
 
-    public static function _query(string $query, array $variables = [], ?string $token = null): array
+    public static function _query(string $query, array $variables = []): array
     {
         $headers = [
-            'Content-Type: application/json'
+            'Content-Type: application/json',
+            "Authorization: bearer " . self::OATH_TOKEN,
         ];
-        
-        if (null !== $token) {
-            $headers[] = "Authorization: bearer $token";
-        }
-    
+
         $data = file_get_contents(self::ENDPOINT, false, stream_context_create(
             [
                 'http' => [
