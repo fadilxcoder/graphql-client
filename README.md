@@ -7,8 +7,9 @@
 
 - All queries located in `queries.php`
 - Response in `index.php`
-- - Single query
-- - Single query with *query variable*
-- - Complex query with multiple objects
+- - **GET** Single query
+- - **GET** Single query with *query variable*
+- - **GET** Complex query with multiple objects
+- - **POST** Create user
 
 ## GraphQL in Javascript (js)

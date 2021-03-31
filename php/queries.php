@@ -2,6 +2,9 @@
 
 class Queries
 {
+    /**
+     * Get single with parameter includes
+     */
     public static function getSinglePost()
     {
         return '
@@ -21,6 +24,9 @@ class Queries
         ';
     }
     
+    /**
+     * Get single with parameter sent as query variables
+     */
     public static function getSinglePostByQueryVar()
     {
         return '
@@ -40,13 +46,35 @@ class Queries
         ';
     }
     
+    /**
+     * Get multiple with multiple parameters sent as query variables
+     */
     public static function getComments()
     {
         return '
             query ($pqo: PageQueryOptions!) {
             comments(options: $pqo) {
-            	data{name, email},
+            	data{name, email}
                 meta{totalCount}
+              }
+            }
+        ';
+    }
+    
+    /**
+     * Post with query variables
+     */
+    public static function postUser()
+    {
+        return '
+            mutation (
+              $input: CreateUserInput!
+            ) {
+              createUser(input: $input) {
+                id
+                name
+                email
+                address{street}
               }
             }
         ';
