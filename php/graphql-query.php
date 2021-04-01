@@ -27,10 +27,8 @@ class GraphQL
                 ]
             ]
         ));
-        
-        // var_dump($data);
     
-        return json_decode($data, true);
+        return (false !== $data) ? json_decode($data, true) : [];
     }
 }
 

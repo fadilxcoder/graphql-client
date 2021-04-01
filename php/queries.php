@@ -79,4 +79,21 @@ class Queries
             }
         ';
     }
+    
+    public static function updateUser()
+    {
+        return '
+            mutation (
+              $id: ID!
+              $input: UpdateUserInput!
+            ) {
+              updateUser(id: $id, input: $input) {
+                id
+                name
+                email
+                address{street}
+              }
+            }
+        ';
+    }
 }

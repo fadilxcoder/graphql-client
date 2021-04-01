@@ -6,13 +6,13 @@ require_once 'queries.php';
 
 use Tracy\Debugger as Debugger;
 Debugger::enable(Debugger::DEVELOPMENT);
-
+dump("Tracy Active !");
 
 #### GET ####
 
 # query include parameter
 $resp = GraphQL::_query(Queries::getSinglePost());
-dump($resp['data']['user']['email']);
+// dump($resp['data']['user']['email']);
 
 
 # passing parameter as query variable
@@ -22,7 +22,7 @@ $resp = GraphQL::_query(
                 'id' => 5
             ]
         );
-dump($resp['data']['user']['email']);
+// dump($resp['data']['user']['email']);
 
 
 # Complex query
@@ -37,10 +37,10 @@ $resp = GraphQL::_query(
                 ]
             ]
         );
-dump($resp['data']['comments']['meta']['totalCount']);
+// dump($resp['data']['comments']['meta']['totalCount']);
 
 foreach ($resp['data']['comments']['data'] as $_resp) {
-    dump($_resp['email'] . " : " . $_resp['name']);
+    // dump($_resp['email'] . " : " . $_resp['name']);
 }
 
 
@@ -64,5 +64,35 @@ $resp = GraphQL::_query(
             ]
         );
         
-bdump($resp);
-dump($resp['data']['createUser']['id']);
+// dump($resp['data']['createUser']['id']);
+
+# Update a user
+
+$resp = GraphQL::_query(
+            Queries::getSinglePostByQueryVar(), 
+            [
+                'id' => 1
+            ]
+        );
+dump($resp['data']['user']['email']);
+
+$resp = GraphQL::_query(
+            Queries::updateUser(),
+            [
+                "id" => 1,
+                "input" => [
+                    "username" => "fadilxcoder",
+                    "email" => "fadil@xcoder.dvlpr",
+                    "address" => [
+                        "street" => "Silicon Valley",
+                        "city" => "California"
+                    ]
+                ]
+            ]
+        );
+        
+dump($resp['data']['updateUser']);
+
+
+
+?>
