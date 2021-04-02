@@ -1,2 +1,4 @@
-/vendor
+vendor
 php_error_log
+node_modules
+# /js/dist/*.*

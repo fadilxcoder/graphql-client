@@ -13,3 +13,7 @@
 - - **POST** Create user
 
 ## GraphQL in Javascript (js)
+
+- Uses webpack, do `npm install`
+- - For installing JQuery : `npm i jquery`
+- - Compile JS in watch mode : `npm run build -- watch`
