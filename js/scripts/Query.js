@@ -39,15 +39,27 @@ class Query {
     }
 
     /**
-     * Get list of objects with query variables
+     * Get list of objects with query variable
      * @returns string
      */
     static multipleQueryWithVar() {
         return `
             query ($pqo: PageQueryOptions!) {
                 users(options: $pqo) {
-                    data{name, email}
+                    data{id, name}
                 }
+            }
+        `;
+    }
+
+    /**
+     * Delete object with query veriable
+     * @returns string
+     */
+    static deleteQueryWithVar() {
+        return `
+            mutation ($id: ID!) {
+                deleteUser(id: $id)
             }
         `;
     }

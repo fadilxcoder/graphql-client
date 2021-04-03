@@ -7,6 +7,7 @@ class GraphqlManager extends Graphql {
         super();
         this.singleRequest();
         this.singleRequestWithVar();
+        this.deleteRequestWithVar();
         this.MultipleRequestWithVar();
     }
 
@@ -28,6 +29,12 @@ class GraphqlManager extends Graphql {
                     limit : 10
                 }
             }
+        });
+    }
+
+    deleteRequestWithVar() {
+        super.handler(Query.deleteQueryWithVar(), {
+            id : 1
         });
     }
 }
