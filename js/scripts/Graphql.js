@@ -7,55 +7,22 @@ class Graphql {
     };
 
     constructor(){
-        this.singleQuery();
-        this.singleQueryWithVar();
     }
 
-    singleQuery() {
+    handler(query, args) {
         var thisObj = this;
-        var query = `
-            query {
-                user(id: 2) {
-                id
-                username
-                email
-                address {
-                    city
-                }
-                }
-            }
-        `;
+        if (null === args) {
+            args = {};
+        }
 
-        this.apiRequest(query)
+        this._apiRequest(query, args)
         .then(function(response) {
-            thisObj.htmlify(response);
+            thisObj._htmlify(response);
         })
         ;
     }
 
-    singleQueryWithVar() {
-        var thisObj = this;
-        var query = `
-            query ($id: ID!) {
-                user(id: $id) {
-                id
-                username
-                email
-                address {
-                    city
-                }
-                }
-            }
-        `;
-
-        this.apiRequest(query, {id: 5})
-        .then(function(response) {
-            thisObj.htmlify(response);
-        })
-        ;
-    }
-
-    apiRequest(query, variables) {
+    _apiRequest(query, variables) {
         var thisObj = this;
 
         return fetch(thisObj.VARS["API"], {
@@ -72,7 +39,7 @@ class Graphql {
         ;
     }
 
-    htmlify($jsonObj) {
+    _htmlify($jsonObj) {
         var $target = $('main');
         var string = JSON.stringify($jsonObj);
         var $apiReader = $('#api-reader');

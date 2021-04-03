@@ -2,6 +2,7 @@
 
 - https://graphqlzero.almansi.me/
 - https://graphqlzero.almansi.me/api
+- `defer` is JS - A script that will not run until after the page has loaded
 
 ## GraphQL in Php (php)
 

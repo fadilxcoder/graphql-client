@@ -1,2 +1,2 @@
-import Graphql from "./Graphql.js";
-new Graphql();
+import GraphqlManager from "./GraphqlManager";
+new GraphqlManager();
