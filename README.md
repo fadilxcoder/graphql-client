@@ -4,6 +4,12 @@
 - https://graphqlzero.almansi.me/api
 - `defer` is JS - A script that will not run until after the page has loaded
 
+## Resources
+
+- https://packagist.org/packages/gmostafa/php-graphql-client
+- https://github.com/mghoneimy/php-graphql-client
+- Package : `composer require gmostafa/php-graphql-client`
+
 ## GraphQL in Php (php)
 
 - All queries located in `queries.php`
