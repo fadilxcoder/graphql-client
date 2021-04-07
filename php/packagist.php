@@ -24,12 +24,32 @@ $gql = (new Query())
                 [
                     'id',
                     'email',
-                    'address{street}',
+                    (new Query('address'))
+                    ->setSelectionSet(
+                        [
+                            'street'    
+                        ]
+                    ),
                     (new Query('posts'))
                     ->setSelectionSet(
                         [
-                            'data{id}',
-                            'data{comments{data{email}}}',
+                            (new Query('data'))
+                            ->setSelectionSet(
+                                [
+                                    'body',
+                                    (new Query('comments'))
+                                    ->setSelectionSet(
+                                        [
+                                            (new Query('data'))
+                                            ->setSelectionSet(
+                                                [
+                                                    'name'
+                                                ]
+                                            )
+                                        ]
+                                    )
+                                ]
+                            )
                         ]
                     )
                 ]
